@@ -447,7 +447,7 @@ class Request
                 $this->path = preg_replace('/\.' . $this->ext() . '$/i', '', $pathinfo);
             }
 //        }
-
+        echo "realPath:".$this->path;
         return $this->path;
     }
 
