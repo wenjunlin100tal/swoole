@@ -43,7 +43,7 @@ $http->on('request', function ($request, $response) use($http){
     }
     ob_start();
     // 执行应用并响应
-    echo "action:".request()->action().PHP_EOL;
+
     try{
         think\Container::get('app', [defined('APP_PATH') ? APP_PATH : ''])
             ->run()
