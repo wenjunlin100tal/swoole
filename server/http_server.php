@@ -43,6 +43,7 @@ $http->on('request', function ($request, $response) use($http){
     }
     ob_start();
     // 执行应用并响应
+    echo "action:".request()->action().PHP_EOL;
     try{
         think\Container::get('app', [defined('APP_PATH') ? APP_PATH : ''])
             ->run()
@@ -57,7 +58,7 @@ $http->on('request', function ($request, $response) use($http){
     ob_end_clean();
 //    $response->cookie('singwa','xssss',time()+1800);
     $response->end($res);
-    $ret = $http->close();
+//    $ret = $http->close();
 
 });
 
