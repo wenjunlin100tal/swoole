@@ -20,8 +20,35 @@ $http->on('WorkerStart',function (swoole_server $server , $worker_id){
 $http->on('request', function ($request, $response) {
 
 //    $response->header("Content-Type", "text/html; charset=utf-8");
+
+    if(isset($request->server) ){
+        foreach ($request->server as $k => $v){
+            $_SERVER[strtoupper($k)] = $v;
+        }
+    }
+    if(isset($request->header) ){
+        foreach ($request->header as $k => $v){
+            $_SERVER[strtoupper($k)] = $v;
+        }
+    }
+    if(isset($request->get) ){
+        foreach ($request->get as $k => $v){
+            $_GET[$k] = $v;
+        }
+    }
+    if(isset($request->post) ){
+        foreach ($request->post as $k => $v){
+            $_POST[$k] = $v;
+        }
+    }
+
+    // 执行应用并响应
+    think\Container::get('app', [defined('APP_PATH') ? APP_PATH : ''])
+        ->run()
+        ->send();
+
     $response->cookie('singwa','xssss',time()+1800);
-    $response->end("sss",json_encode($request->get) );
+    $response->end("sss".json_encode($request->get) );
 });
 
 $http->start();
