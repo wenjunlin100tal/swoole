@@ -42,13 +42,15 @@ $http->on('request', function ($request, $response) {
         }
     }
 
+    ob_start();
     // 执行应用并响应
     think\Container::get('app', [defined('APP_PATH') ? APP_PATH : ''])
         ->run()
         ->send();
-
+    $res = ob_get_contents();
+    ob_end_clean();
     $response->cookie('singwa','xssss',time()+1800);
-    $response->end("sss".json_encode($request->get) );
+    $response->end($res);
 });
 
 $http->start();
