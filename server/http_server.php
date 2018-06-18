@@ -52,6 +52,8 @@ $http->on('request', function ($request, $response) use($http){
         //todo
     }
     echo "action:".request()->action().PHP_EOL;
+    var_dump($request);
+    var_dump($response);
     $res = ob_get_contents();
     ob_end_clean();
 //    $response->cookie('singwa','xssss',time()+1800);
