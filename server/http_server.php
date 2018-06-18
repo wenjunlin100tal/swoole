@@ -17,7 +17,7 @@ $http->on('WorkerStart',function (swoole_server $server , $worker_id){
 
 });
 
-$http->on('request', function ($request, $response) {
+$http->on('request', function ($request, $response) use($http){
 
 //    $response->header("Content-Type", "text/html; charset=utf-8");
 
@@ -55,6 +55,7 @@ $http->on('request', function ($request, $response) {
     ob_end_clean();
     $response->cookie('singwa','xssss',time()+1800);
     $response->end($res);
+    $http->close();
 });
 
 $http->start();
