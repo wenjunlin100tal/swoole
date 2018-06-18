@@ -1,5 +1,5 @@
 <?php
-
+//swoole开启http服务
 $http = new swoole_http_server("0.0.0.0",9507);
 
 $http->set([
