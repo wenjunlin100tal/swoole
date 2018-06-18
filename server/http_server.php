@@ -41,7 +41,7 @@ $http->on('request', function ($request, $response) use($http){
             $_POST[$k] = $v;
         }
     }
-    echo "action:".request()->action();
+//    echo "action:".request()->action();
     ob_start();
     // 执行应用并响应
     try{
@@ -51,7 +51,7 @@ $http->on('request', function ($request, $response) use($http){
     }catch (\Exception $e){
         //todo
     }
-    echo "action:".request()->action().PHP_EOL;
+//    echo "action:".request()->action().PHP_EOL;
     $res = ob_get_contents();
     ob_end_clean();
 //    $response->cookie('singwa','xssss',time()+1800);
