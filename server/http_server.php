@@ -44,9 +44,13 @@ $http->on('request', function ($request, $response) {
 
     ob_start();
     // 执行应用并响应
-    think\Container::get('app', [defined('APP_PATH') ? APP_PATH : ''])
-        ->run()
-        ->send();
+    try{
+        think\Container::get('app', [defined('APP_PATH') ? APP_PATH : ''])
+            ->run()
+            ->send();
+    }catch (\Exception $e){
+        //todo
+    }
     $res = ob_get_contents();
     ob_end_clean();
     $response->cookie('singwa','xssss',time()+1800);
