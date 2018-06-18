@@ -51,6 +51,7 @@ $http->on('request', function ($request, $response) use($http){
         //todo
     }
     echo "action:".request()->action().PHP_EOL;
+    echo "fd:".$request->fd;
 //    var_dump($request);
     $res = ob_get_contents();
     ob_end_clean();
