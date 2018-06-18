@@ -57,7 +57,12 @@ $http->on('request', function ($request, $response) use($http){
     ob_end_clean();
 //    $response->cookie('singwa','xssss',time()+1800);
     $response->end($res);
-    $http->close($request->fd,true);
+    $res = $http->close($request->fd,true);
+    if($res){
+        echo 1;
+    }else{
+        echo 2;
+    }
 });
 
 $http->start();
