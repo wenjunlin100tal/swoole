@@ -418,6 +418,7 @@ class Request
                     }
                 }
             }
+        var_dump($_SERVER['PATH_INFO']);
         echo "path2:".$this->pathinfo;
             $this->pathinfo = empty($_SERVER['PATH_INFO']) ? '/' : ltrim($_SERVER['PATH_INFO'], '/');
 //        }
@@ -436,7 +437,7 @@ class Request
 
             $suffix   = $this->config->get('url_html_suffix');
             $pathinfo = $this->pathinfo();
-            echo $suffix.'\n';
+            echo $suffix.'\r\n';
             if (false === $suffix) {
                 // 禁止伪静态访问
                 $this->path = $pathinfo;
