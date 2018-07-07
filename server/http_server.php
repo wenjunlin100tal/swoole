@@ -54,8 +54,8 @@ $http->on('request', function ($request, $response) use($http){
     }catch (\Exception $e){
         //todo
     }
-    echo "action:".request()->action().PHP_EOL;
-    echo "fd:".$request->fd;
+//    echo "action:".request()->action().PHP_EOL;
+//    echo "fd:".$request->fd;
     $res = ob_get_contents();
     ob_end_clean();
     $response->end($res);
