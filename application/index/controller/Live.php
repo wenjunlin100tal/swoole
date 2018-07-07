@@ -7,8 +7,8 @@ class Live extends Controller
 {
     public function index()
     {
-        
-        return $this->display('login');
+
+        return $this->fetch('login');
     }
 
     public function hello($name = 'ThinkPHP5')
