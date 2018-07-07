@@ -31,11 +31,13 @@ $http->on('request', function ($request, $response) use($http){
             $_SERVER[strtoupper($k)] = $v;
         }
     }
+    $_GET = [];
     if(isset($request->get) ){
         foreach ($request->get as $k => $v){
             $_GET[$k] = $v;
         }
     }
+    $_POST = [];
     if(isset($request->post) ){
         foreach ($request->post as $k => $v){
             $_POST[$k] = $v;
