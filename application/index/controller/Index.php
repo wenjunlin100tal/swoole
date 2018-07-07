@@ -20,7 +20,7 @@ class Index
 
     public function sms()
     {
-        header("Content-type: text/html; charset=utf-8");
+        header('Content-Type: text/plain; charset=utf-8');
         $phone = 17784496304;
         $code = 123456;
         $result = Sms::sendSms($phone, $code);
