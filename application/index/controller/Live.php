@@ -1,7 +1,9 @@
 <?php
 namespace app\index\controller;
 
-class Live
+use think\Controller;
+
+class Live extends Controller
 {
     public function index()
     {
