@@ -418,11 +418,11 @@ class Request
                     }
                 }
             }
-        var_dump($_SERVER['PATH_INFO']);
-        echo "path2:".$this->pathinfo;
+//        var_dump($_SERVER['PATH_INFO']);
+//        echo "path2:".$this->pathinfo;
             $this->pathinfo = empty($_SERVER['PATH_INFO']) ? '/' : ltrim($_SERVER['PATH_INFO'], '/');
 //        }
-        echo "path:".$this->pathinfo;
+//        echo "path:".$this->pathinfo;
         return $this->pathinfo;
     }
 
@@ -437,7 +437,7 @@ class Request
 
             $suffix   = $this->config->get('url_html_suffix');
             $pathinfo = $this->pathinfo();
-            echo $suffix.'\r\n';
+
             if (false === $suffix) {
                 // 禁止伪静态访问
                 $this->path = $pathinfo;
@@ -449,7 +449,7 @@ class Request
                 $this->path = preg_replace('/\.' . $this->ext() . '$/i', '', $pathinfo);
             }
 //        }
-        echo "realPath:".$this->path;
+//        echo "realPath:".$this->path;
         return $this->path;
     }
 
