@@ -397,7 +397,7 @@ class Request
      */
     public function pathinfo()
     {
-//        if (is_null($this->pathinfo)) {
+        if (is_null($this->pathinfo)) {
 
             if (isset($_GET[$this->config->get('var_pathinfo')])) {
                 // 判断URL里面是否有兼容模式参数
@@ -421,7 +421,7 @@ class Request
 //        var_dump($_SERVER['PATH_INFO']);
 //        echo "path2:".$this->pathinfo;
             $this->pathinfo = empty($_SERVER['PATH_INFO']) ? '/' : ltrim($_SERVER['PATH_INFO'], '/');
-//        }
+        }
 //        echo "path:".$this->pathinfo;
         return $this->pathinfo;
     }
@@ -433,7 +433,7 @@ class Request
      */
     public function path()
     {
-//        if (is_null($this->path)) {
+        if (is_null($this->path)) {
 
             $suffix   = $this->config->get('url_html_suffix');
             $pathinfo = $this->pathinfo();
@@ -448,7 +448,7 @@ class Request
                 // 允许任何后缀访问
                 $this->path = preg_replace('/\.' . $this->ext() . '$/i', '', $pathinfo);
             }
-//        }
+        }
 //        echo "realPath:".$this->path;
         return $this->path;
     }
