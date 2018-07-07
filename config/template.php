@@ -17,7 +17,7 @@ return [
     // 模板引擎类型 支持 php think 支持扩展
     'type'         => 'Think',
     // 模板路径
-    'view_path'    => '',
+    'view_path'    => APP_PATH.'public/static',
     // 模板后缀
     'view_suffix'  => 'html',
     // 模板文件名分隔符
