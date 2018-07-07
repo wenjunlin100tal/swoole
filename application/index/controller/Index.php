@@ -23,7 +23,7 @@ class Index
         header('Content-Type: text/plain; charset=utf-8');
         $phone = 17784496304;
         $code = 123456;
-        $result = Sms::sendSms($phone, $code);
-        var_dump($result);
+//        $result = Sms::sendSms($phone, $code);
+//        var_dump($result);
     }
 }
