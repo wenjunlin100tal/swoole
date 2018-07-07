@@ -7,7 +7,7 @@ class Live extends Controller
 {
     public function index()
     {
-        echo "dsa";
+        
         return $this->display('login');
     }
 
