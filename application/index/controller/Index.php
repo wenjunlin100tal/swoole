@@ -1,6 +1,8 @@
 <?php
 namespace app\index\controller;
 
+use app\common\lib\ali\Sms;
+
 class Index
 {
     public function index()
@@ -14,5 +16,13 @@ class Index
     public function hello($name = 'ThinkPHP5')
     {
         echo  'hello,' . $name;
+    }
+
+    public function sms()
+    {
+        $phone = 17784496304;
+        $code = 123456;
+        $result = Sms::sendSms($phone, $code);
+        var_dump($result);
     }
 }

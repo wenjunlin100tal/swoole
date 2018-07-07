@@ -21,7 +21,7 @@ Config::load();
  * (只需要将AK替换成开通了云通信-短信服务产品功能的AK即可)
  * 备注:Demo工程编码采用UTF-8
  */
-class SmsDemo
+class Sms
 {
 
     static $acsClient = null;
@@ -39,9 +39,9 @@ class SmsDemo
         $domain = "dysmsapi.aliyuncs.com";
 
         // TODO 此处需要替换成开发者自己的AK (https://ak-console.aliyun.com/)
-        $accessKeyId = "yourAccessKeyId"; // AccessKeyId
+        $accessKeyId = "LTAIr3QsIb6KJuUN"; // AccessKeyId
 
-        $accessKeySecret = "yourAccessKeySecret"; // AccessKeySecret
+        $accessKeySecret = "XOahB8GAIRjZDAwc74Gdcwni5BJAGh"; // AccessKeySecret
 
         // 暂时不支持多Region
         $region = "cn-hangzhou";
@@ -68,7 +68,7 @@ class SmsDemo
      * 发送短信
      * @return stdClass
      */
-    public static function sendSms() {
+    public static function sendSms($phone, $code) {
 
         // 初始化SendSmsRequest实例用于设置发送短信的参数
         $request = new SendSmsRequest();
@@ -77,22 +77,22 @@ class SmsDemo
         //$request->setProtocol("https");
 
         // 必填，设置短信接收号码
-        $request->setPhoneNumbers("12345678901");
+        $request->setPhoneNumbers($phone);
 
         // 必填，设置签名名称，应严格按"签名名称"填写，请参考: https://dysms.console.aliyun.com/dysms.htm#/develop/sign
-        $request->setSignName("短信签名");
+        $request->setSignName("文俊林");
 
         // 必填，设置模板CODE，应严格按"模板CODE"填写, 请参考: https://dysms.console.aliyun.com/dysms.htm#/develop/template
-        $request->setTemplateCode("SMS_0000001");
+        $request->setTemplateCode("SMS_139230732");
 
         // 可选，设置模板参数, 假如模板中存在变量需要替换则为必填项
         $request->setTemplateParam(json_encode(array(  // 短信模板中字段的值
-            "code"=>"12345",
+            "code" => $code,
             "product"=>"dsd"
         ), JSON_UNESCAPED_UNICODE));
 
         // 可选，设置流水号
-        $request->setOutId("yourOutId");
+//        $request->setOutId("yourOutId");
 
         // 选填，上行短信扩展码（扩展码字段控制在7位或以下，无特殊需求用户请忽略此字段）
         $request->setSmsUpExtendCode("1234567");
@@ -188,21 +188,21 @@ class SmsDemo
 }
 
 // 调用示例：
-set_time_limit(0);
-header('Content-Type: text/plain; charset=utf-8');
-
-$response = SmsDemo::sendSms();
-echo "发送短信(sendSms)接口返回的结果:\n";
-print_r($response);
-
-sleep(2);
-
-$response = SmsDemo::sendBatchSms();
-echo "批量发送短信(sendBatchSms)接口返回的结果:\n";
-print_r($response);
-
-sleep(2);
-
-$response = SmsDemo::querySendDetails();
-echo "查询短信发送情况(querySendDetails)接口返回的结果:\n";
-print_r($response);
+//set_time_limit(0);
+//header('Content-Type: text/plain; charset=utf-8');
+//
+//$response = SmsDemo::sendSms();
+//echo "发送短信(sendSms)接口返回的结果:\n";
+//print_r($response);
+//
+//sleep(2);
+//
+//$response = SmsDemo::sendBatchSms();
+//echo "批量发送短信(sendBatchSms)接口返回的结果:\n";
+//print_r($response);
+//
+//sleep(2);
+//
+//$response = SmsDemo::querySendDetails();
+//echo "查询短信发送情况(querySendDetails)接口返回的结果:\n";
+//print_r($response);
