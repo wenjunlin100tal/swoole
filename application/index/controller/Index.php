@@ -18,6 +18,11 @@ class Index
         echo  'hello,' . $name;
     }
 
+    public function login()
+    {
+
+    }
+
     public function sms()
     {
         header('Content-Type: text/plain; charset=utf-8');
