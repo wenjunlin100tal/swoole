@@ -31,14 +31,20 @@ class Send
             $redis->connect(config('redis.host'), config('redis.port') );
             $redis->set(Redis::smsKey($phoneNum).$phoneNum, $code, config('redis.out_time') );
             $res['ss'] = $redis->get(Redis::smsKey($phoneNum).$phoneNum );
-            return Util::show(config('code.error'),'ok',$res);
+            return Util::show(config('code.success'),'ok',$res);
         }
 
     }
 
     public function hello($name = 'ThinkPHP5')
     {
-        echo  'hello,' . $name;
+        $phoneNum = 177844;
+        $code = 4578;
+        $redis = new \Swoole\Coroutine\Redis();
+        $redis->connect(config('redis.host'), config('redis.port') );
+        $redis->set(Redis::smsKey($phoneNum).$phoneNum, $code, config('redis.out_time') );
+        $res['ss'] = $redis->get(Redis::smsKey($phoneNum).$phoneNum );
+        return Util::show(config('code.success'),'ok',$res);
     }
 
 }
