@@ -13,8 +13,8 @@ class Send
     {
         $phoneNum = request()->get('phone_num',0,'intval');
         if( empty($phoneNum) ){
-            echo Util::show(0,'error');
-            return ;
+            return Util::show(0,'error');
+
         }
 
 //        header('Content-Type: text/plain; charset=utf-8');
