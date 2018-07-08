@@ -40,7 +40,7 @@ class Send
     {
         $phoneNum = 177844;
         $code = 4578;
-        $redis = new \Swoole\Coroutine\Redis();
+        $redis = new \Redis();
         $redis->connect(config('redis.host'), config('redis.port') );
         $redis->set(Redis::smsKey($phoneNum).$phoneNum, $code, config('redis.out_time') );
         $res['ss'] = $redis->get(Redis::smsKey($phoneNum).$phoneNum );
