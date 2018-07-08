@@ -44,7 +44,7 @@ class Send
         $redis->connect(config('redis.host'), config('redis.port') );
         $redis->set(Redis::smsKey($phoneNum).$phoneNum, $code, config('redis.out_time') );
         $res['ss'] = $redis->get(Redis::smsKey($phoneNum).$phoneNum );
-        return Util::show(config('code.success'),'ok',$res);
+//        return Util::show(config('code.success'),'ok',$res);
     }
 
 }
