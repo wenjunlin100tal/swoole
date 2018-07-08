@@ -79,7 +79,7 @@
 	<form class="login" id="form">
 		<h2>singwa体育赛事图文直播平台</h2>
 		<div class="login-item">
-			<input type="text" placeholder="手机号" class="phone-num" name="phone_num"/>
+			<input type="number" placeholder="手机号" class="phone-num" name="phone_num"/>
 			<button type="button" id="authCodeBtn">验证码</button>
 		</div>
 		<div class="login-item">
@@ -106,9 +106,9 @@
 				if (data.status == 'ok') {
 					alert('发送完成');
 				}
-				// if (result.status != 'ok') {
-				// 	alert('网络错误');
-				// }
+				 if (result.status != 'ok') {
+				 	alert('错误');
+				 }
 			});
 			});
 
