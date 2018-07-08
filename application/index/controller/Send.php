@@ -13,7 +13,7 @@ class Send
     {
         $phoneNum = request()->get('phone_num',0,'intval');
         if( empty($phoneNum) ){
-            return Util::show(0,'error');
+            return Util::show(config('code.error'),'error');
 
         }
 
