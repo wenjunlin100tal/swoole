@@ -8,7 +8,7 @@ $http->set([
     'worker_num' => 5,
 ]);
 
-//$http->on('WorkerStart',function (swoole_server $server , $worker_id){
+$http->on('WorkerStart',function (swoole_server $server , $worker_id){
     // 定义应用目录
     define('APP_PATH', __DIR__ . '/../application/');
     // 加载框架引导文件
@@ -16,7 +16,7 @@ $http->set([
 
 //    require __DIR__ . '/../thinkphp/start.php';
 
-//});
+});
 
 $http->on('request', function ($request, $response) use($http){
 

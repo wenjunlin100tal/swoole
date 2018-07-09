@@ -12,7 +12,8 @@ class Send
      */
     public function login()
     {
-        $phoneNum = request()->get('phone_num',0,'intval');
+//        $phoneNum = request()->get('phone_num',0,'intval');
+        $phoneNum = intval($_GET['phone_num'] );
         if( empty($phoneNum) ){
             return Util::show(config('code.error'),'error');
         }
@@ -32,6 +33,8 @@ class Send
             $redis->set(Redis::smsKey($phoneNum).$phoneNum, $code, config('redis.out_time') );
             $res['ss'] = $redis->get(Redis::smsKey($phoneNum).$phoneNum );
             return Util::show(config('code.success'),'ok',$res);
+        }else{
+            return Util::show(config('code.error'),'失败');
         }
 
     }
