@@ -9,7 +9,6 @@ class Index
     {
 
         print_r($_GET);
-
         echo "hello word";
     }
 
