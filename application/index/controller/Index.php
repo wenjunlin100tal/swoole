@@ -7,7 +7,7 @@ class Index
 {
     public function index()
     {
-
+        echo "ceshi";
         print_r($_GET);
         echo "hello word";
     }
