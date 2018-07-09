@@ -9,7 +9,6 @@ class Login extends Controller
     {
         $phoneNum = intval($_GET['phone_num']);
         $code = intval($_GET['code'] );
-        
 
     }
 
