@@ -33,7 +33,9 @@ class Send
             $res['ss'] = $redis->get(Redis::smsKey($phoneNum).$phoneNum );
             return Util::show(config('code.success'),'ok',$res);
         }
-
+        if(true){
+            
+        }
     }
 
     public function hello($name = 'ThinkPHP5')
