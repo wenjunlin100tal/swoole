@@ -3,18 +3,15 @@ namespace app\index\controller;
 
 use think\Controller;
 
-class Live extends Controller
+class Login extends Controller
 {
     public function index()
     {
+        $phoneNum = intval($_GET['phone_num']);
+        $code = intval($_GET['code'] );
 
-        return $this->fetch('login');
     }
 
-    public function hello($name = 'ThinkPHP5')
-    {
-        echo  'hello,' . $name;
-    }
 
     public function sms()
     {
