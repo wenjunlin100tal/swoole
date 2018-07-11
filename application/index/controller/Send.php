@@ -36,9 +36,6 @@ class Send
         }else{
             return Util::show(config('code.error'),'失败');
         }
-        if(true){
-            
-        }
     }
 
     public function hello($name = 'ThinkPHP5')

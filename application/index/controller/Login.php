@@ -1,6 +1,8 @@
 <?php
 namespace app\index\controller;
 
+use app\common\lib\Redis;
+use app\common\lib\redis\Predis;
 use think\Controller;
 
 class Login extends Controller
@@ -9,8 +11,15 @@ class Login extends Controller
     {
         $phoneNum = intval($_GET['phone_num']);
         $code = intval($_GET['code'] );
+        if( empty($phoneNum) || empty($code) ){
 
+        }
+        $smsCode = Predis::getInstance()->get(Redis::smsKey($phoneNum).$phoneNum);
+        if( $code != $smsCode){
+
+        }
     }
+
 
 
     public function sms()
