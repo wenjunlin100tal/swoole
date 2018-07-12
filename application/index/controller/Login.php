@@ -34,7 +34,7 @@ class Login extends Controller
 
             return Util::show(config('code.success'),'ok',$data);
         }else{
-            return Util::show(config('code.error'),'login error');
+            return Util::show(config('code.error'),'login error',['s'=>$redisCode]);
         }
 
     }
