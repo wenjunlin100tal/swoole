@@ -10,6 +10,7 @@ namespace app\common\lib;
 class Redis{
 
     public static $pre = "sms_";
+    public static $userpre = "user_";
 
     /*
      * 发送验证码
@@ -18,4 +19,7 @@ class Redis{
         return self::$pre.$phone;
     }
 
+    public static function userKey($phone){
+        return self::$userpre.$phone;
+    }
 }

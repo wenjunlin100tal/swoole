@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use app\common\lib\Redis;
 use app\common\lib\redis\Predis;
+use app\common\lib\Util;
 use think\Controller;
 
 class Login extends Controller
@@ -11,9 +12,30 @@ class Login extends Controller
     {
         $phoneNum = intval($_GET['phone_num']);
         $code = intval($_GET['code'] );
-        if( empty($phoneNum) || empty($code) ){
 
+        if(empty($phoneNum) || empty($code) ){
+            return Util::show(config('code.error'),'error');
         }
+        try{
+            $redisCode = Predis::getInstance()->get(Redis::smsKey($phoneNum) );
+        }catch (\Exception $e){
+            echo $e->getMessage();
+        }
+        if($redisCode == $code){
+            //
+            $data = [
+                'user' => $phoneNum,
+                'srcKey' => md5(Redis::userKey($phoneNum) ),
+                'time' => time(),
+                'isLogin' => true,
+            ];
+            Predis::getInstance()->set(Redis::userKey($phoneNum), $data);
+
+            return Util::show(config('code.success'),'ok',$data);
+        }else{
+            return Util::show(config('code.error'),'login error');
+        }
+
         $smsCode = Predis::getInstance()->get(Redis::smsKey($phoneNum).$phoneNum);
         if( $code != $smsCode){
 
@@ -28,6 +50,6 @@ class Login extends Controller
         $phone = 17784496304;
         $code = 123456;
 //        $result = Sms::sendSms($phone, $code);
-//        var_dump($result);
+//        var_dump($result);ss
     }
 }
