@@ -14,7 +14,7 @@ class Login extends Controller
         $code = intval($_GET['code'] );
         Predis::getInstance()->set('wen',55,120 );
         $redisCode = Predis::getInstance()->get('wen' );
-        echo $redisCode;
+        var_dump( $redisCode );
         return;
         if(empty($phoneNum) || empty($code) ){
             return Util::show(config('code.error'),'error');
