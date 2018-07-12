@@ -28,7 +28,8 @@ class Send
 //        header('Content-Type: text/plain; charset=utf-8');
         if($result->Code === "OK"){
             //redis保存
-            $redis = new \Swoole\Coroutine\Redis();
+//            $redis = new \Swoole\Coroutine\Redis();
+            $redis = new \Redis();
             $redis->connect(config('redis.host'), config('redis.port') );
             $redis->set(Redis::smsKey($phoneNum).$phoneNum, $code, config('redis.out_time') );
             $res['ss'] = $redis->get(Redis::smsKey($phoneNum).$phoneNum );
