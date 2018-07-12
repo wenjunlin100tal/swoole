@@ -36,10 +36,6 @@ class Login extends Controller
             return Util::show(config('code.error'),'login error');
         }
 
-        $smsCode = Predis::getInstance()->get(Redis::smsKey($phoneNum).$phoneNum);
-        if( $code != $smsCode){
-
-        }
     }
 
 
