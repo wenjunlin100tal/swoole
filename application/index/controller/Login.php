@@ -20,6 +20,7 @@ class Login extends Controller
         }catch (\Exception $e){
             echo $e->getMessage();
         }
+        echo 2;
         if($redisCode == $code){
             //
             $data = [
