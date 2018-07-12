@@ -13,6 +13,7 @@ class Login extends Controller
         $phoneNum = intval($_GET['phone_num']);
         $code = intval($_GET['code'] );
         echo 2;
+        return;
         if(empty($phoneNum) || empty($code) ){
             return Util::show(config('code.error'),'error');
         }
