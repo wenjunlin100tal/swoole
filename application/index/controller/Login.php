@@ -13,6 +13,11 @@ class Login extends Controller
         $phoneNum = intval($_GET['phone_num']);
         $code = intval($_GET['code'] );
 
+        Predis::getInstance()->set('wen',55,120 );
+        $redisCode = Predis::getInstance()->get('wen' );
+        var_dump( $redisCode );
+        return;
+
         if(empty($phoneNum) || empty($code) ){
             return Util::show(config('code.error'),'error');
         }
@@ -21,6 +26,7 @@ class Login extends Controller
         }catch (\Exception $e){
             echo $e->getMessage();
         }
+
         if($redisCode == $code){
             //
             $data = [
@@ -33,7 +39,7 @@ class Login extends Controller
 
             return Util::show(config('code.success'),'ok',$data);
         }else{
-            return Util::show(config('code.error'),'login error');
+            return Util::show(config('code.error'),'login error',['s'=>$redisCode]);
         }
 
     }

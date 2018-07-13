@@ -102,12 +102,13 @@
 			$(this).html('已发送').attr('disabled', true);
 			// $.post()
 			$.get(url, function (data) {
+			    console.log(data);
 				// TODO: 将下面3行代码删除
 				if (data.status == 'ok') {
 					alert('发送完成');
 				}
-				 if (result.status != 'ok') {
-				 	alert('错误');
+				 if (data.status != 'ok') {
+					alert('错误');
 				 }
 			});
 			});
@@ -117,7 +118,7 @@
 				event.preventDefault();
 				var formData = $('form').serialize();
 				// TODO: 请求后台接口跳转界面，前端跳转或者后台跳
-				$.get("http://118.24.112.162:9507?s=index/login/index?"+formData, function (data) {
+				$.get("http://118.24.112.162:9507?s=index/login/index&"+formData, function (data) {
 //					console.log("https://www.easy-mock.com/mock/5ab1188bddac7967e4398146/example/query?" + formData);
 					// location.href='index.html';
 					console.log(data)
@@ -126,7 +127,7 @@
 					}else{
 
 					}
-				},'json');
+				});
 			});
 
 			// 返回上一页

@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use app\common\lib\ali\Sms;
 use app\common\lib\Redis;
+use app\common\lib\redis\Predis;
 use app\common\lib\Util;
 
 class Send
@@ -28,10 +29,14 @@ class Send
 //        header('Content-Type: text/plain; charset=utf-8');
         if($result->Code === "OK"){
             //redis保存
-            $redis = new \Swoole\Coroutine\Redis();
+//            $redis = new \Swoole\Coroutine\Redis();
+            /**
+            $redis = new \Redis();
             $redis->connect(config('redis.host'), config('redis.port') );
             $redis->set(Redis::smsKey($phoneNum).$phoneNum, $code, config('redis.out_time') );
-            $res['ss'] = $redis->get(Redis::smsKey($phoneNum).$phoneNum );
+            **/
+            Predis::getInstance()->set(Redis::smsKey($phoneNum).$phoneNum, $code, config('redis.out_time') );
+            $res['ss'] = Predis::getInstance()->get(Redis::smsKey($phoneNum).$phoneNum );
             return Util::show(config('code.success'),'ok',$res);
         }else{
             return Util::show(config('code.error'),'失败');

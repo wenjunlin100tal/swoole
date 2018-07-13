@@ -8,5 +8,5 @@
 return array(
     'host' => '127.0.0.1',
     'port' => 6379,
-    'out_time' => 120,//失效时间
+    'out_time' => 12000,//失效时间 秒
 );
